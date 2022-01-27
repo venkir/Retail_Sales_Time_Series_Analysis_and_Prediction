@@ -1,9 +1,11 @@
 # Retail_Sales_Time_Series_Analysis_and_Prediction
 
 **Time series analysis, and forecasting using VAR,VARIMAX and SARIMAX**
+
 For Rossmann Retail Sales
 By : Venki Ramachandran
 Dated : 17-Jan-2022
+
 Rossmann is a European drug distributor which operates over 3,000 drug stores across seven European countries. Since a lot of drugs come with a short shelf life, that is, they do not have a long expiry date, it becomes imperative for Rossmann to accurately forecast sales at their individual stores. Currently, the forecasting is taken care of by the store managers who are tasked with forecasting daily sales for the next six weeks.
 
 As expected, store sales are influenced by many factors, including promotional campaigns, competition, state holidays, seasonality, and locality.
@@ -11,17 +13,17 @@ As expected, store sales are influenced by many factors, including promotional c
 With thousands of individual managers predicting sales based on their unique circumstances and intuitions, the accuracy of the forecasts is quite varied. To overcome this problem, the company has hired you as a data scientist to work on the forecasting problem. As part of your job role, you are tasked with building a forecasting model to forecast the daily sales for the next six weeks. To help you with the same, you have been provided with historical sales data for 1,115 Rossmann stores
 
 Process Followed:
-Load the two (2) CSV files - store and train csv files, do some initial analysis, and then merge. Initial Count of records is: 1017209
-Filter for the nine(9) Stores: Count reduces to 8110
-Remove the rows where Open=0 (Closed on Sunday) and Sales = 0. I went back and forth on this, whether to remove the rows or leave it in. After all, time series analysis should be able to detect that all Sundays, the shops are closed and there are no Sales. I decided to remove these rows as ZERO (0) valuesi in the Sales column was creating a lot of issues. Such as:
-MAPE coud not get calculaed for simple time series
-Box Cox transformation does not work out of the box. Had to use boxcox1p a special lib
-In the end, decided to remove the rows and let the time series handle the trend.
-Count of records dropped to 6681
-On this set, EDA was performed. The results of the EDA are listed in next section
-The stores were then split into nine (9) seperate data frames, one for each
-A combined analysis was done on all nine stores as one large time series, but because of non-aligned dates and gaps in the data, the RMSE and MAPE accurayc was very bad. And so this process, was abandoned and individual stores analysis was undertaken
-Store 13 and 46 has about 320 rows missing which were added using the date_range method, filled with no.nan values and then interpolated (Sales and Customers column). The rest were filled using ffil() and bfill() methods.
+1. Load the two (2) CSV files - store and train csv files, do some initial analysis, and then merge. Initial Count of records is: 1017209
+2. Filter for the nine(9) Stores: Count reduces to 8110
+3. Remove the rows where Open=0 (Closed on Sunday) and Sales = 0. I went back and forth on this, whether to remove the rows or leave it in. After all, time series analysis should be able to detect that all Sundays, the shops are closed and there are no Sales. I decided to remove these rows as ZERO (0) valuesi in the Sales column was creating a lot of issues. Such as:
+4. MAPE coud not get calculaed for simple time series
+5. Box Cox transformation does not work out of the box. Had to use boxcox1p a special lib
+6. In the end, decided to remove the rows and let the time series handle the trend.
+7. Count of records dropped to 6681
+8. On this set, EDA was performed. The results of the EDA are listed in next section
+9. The stores were then split into nine (9) seperate data frames, one for each
+10. A combined analysis was done on all nine stores as one large time series, but because of non-aligned dates and gaps in the data, the RMSE and MAPE accurayc was very bad. And so this process, was abandoned and individual stores analysis was undertaken
+11. Store 13 and 46 has about 320 rows missing which were added using the date_range method, filled with no.nan values and then interpolated (Sales and Customers column). The rest were filled using ffil() and bfill() methods.
 
 Time Series Analysis - Find Gaps, Impute Values, Smooth using Linear Interpolation + Seasonality.
 Auto Regression Models Used for all nine (9) stores:
