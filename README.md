@@ -73,6 +73,7 @@ Auto Regression Models Used for all nine (9) stores:
 1. Is the sales data non-stationary? If so, how do you find it and correct it?
 
 While analyzing the nine(9) stores's data, some of the time series was stationary and for some not stationary, base on the ADF and KPSS tests. In some cases they gave contradictory answers. I used Box Cox and Differencing to make them stationaty and proceed.
+
 2. Is the data cointegrated? Which variables are cointegrated and how do you find them?
 
 If you look at the two specific columns - Sales and Customers, Yes they are cointegrated. Based on the rank provided by the output of Johansen test, and checking to see the value = 1, we concluded that the two series were cointegrated.
